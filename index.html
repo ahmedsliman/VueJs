@@ -17,6 +17,17 @@
       <div id="app">
         <h1>{{ message }}</h1>
         <h1 v-bind:class="className">{{ message }}</h1>
+        <h1 v-if="show">Third show if</h1>
+        <ol>
+          <li v-for="language in languages">{{ language }}</li>
+        </ol>
+        <ol v-show="showCountries">
+          <li v-for="country in countries">{{ country.name }}</li>
+        </ol>
+
+        <input type="text" v-model="message" class="form-control" />
+
+        <button v-on:Click="enableList">Show Countries</button>
       </div>
     </div>
 
@@ -26,6 +37,20 @@
         data: {
           message: 'This is the first lesson in Vue!',
           className: 'alert alert-danger',
+          show: false,
+          languages: ['Arabic', 'English', 'German'],
+          countries: [
+            { name: 'Egypt' },
+            { name: 'Germany' },
+            { name: 'US' },
+            { name: 'Italy' },
+          ],
+          showCountries: false,
+        },
+        methods: {
+          enableList: function() {
+            this.showCountries = true
+          },
         },
       })
     </script>
