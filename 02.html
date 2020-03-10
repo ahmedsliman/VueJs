@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VueJs - Basics</title>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div id="app">
+            <h1>reverseC: {{ reverseC }}</h1>
+            <h1>reverseC: {{ reverseC }}</h1>
+            <h1>reverseM: {{ reverseM() }}</h1>
+            <h1>reverseM: {{ reverseM() }}</h1>
+            <h1>reverseC: {{ reverseC }}</h1>
+            <h1>reverseM: {{ reverseM() }}</h1>
+
+            <input type="text" v-model="km" placeholder="km" />
+            <input type="text" v-model="m" placeholder="m" />
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'This is the second lesson in VueJs: compound and watch',
+                km: 0,
+                m: 0,
+            },
+            methods: {
+                reverseM: function () {
+                    return Date.now();
+                },
+            },
+            computed: {
+                reverseC: function () {
+                    return Date.now();
+                },
+            },
+
+            watch: {
+                km: function (val) {
+                    this.km = val;
+                    this.m = val * 1000;
+                },
+                m: function (val) {
+                    this.km = val / 1000;
+                    this.m = val;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
