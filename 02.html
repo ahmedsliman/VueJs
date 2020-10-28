@@ -23,6 +23,8 @@
 
             <input type="text" v-model="km" placeholder="km" />
             <input type="text" v-model="m" placeholder="m" />
+
+            <input type="text" v-model="fullName" />
         </div>
     </div>
 
@@ -33,6 +35,8 @@
                 message: 'This is the second lesson in VueJs: compound and watch',
                 km: 0,
                 m: 0,
+                firstName: 'Ahmed',
+                lastName: 'Soliman'
             },
             methods: {
                 reverseM: function () {
@@ -43,6 +47,16 @@
                 reverseC: function () {
                     return Date.now();
                 },
+                fullName: {
+                    get: function(){
+                        return this.firstName + ' ' + this.lastName;
+                    },
+                    set: function(name){
+                        var name = name.split(' ');
+                        this.firstName = name[0];
+                        this.lastName = name[1];
+                    }
+                }
             },
 
             watch: {
